@@ -16,7 +16,3 @@ To use this script, ensure you have the following Python libraries installed:
 1. `requests` for handling HTTP requests.
 2. `beautifulsoup4` for parsing HTML content.
 
-You can install them via `pip`:
-
-```bash
-pip install requests beautifulsoup4
