@@ -1,3 +1,5 @@
+# Author - Shriyog Bhesare
+
 # Recursive URL Spider
 
 This Python script performs recursive web scraping to discover and collect unique URLs from a given starting URL, filtering them based on a specified keyword. The script leverages Python's `requests` library to make HTTP requests and `BeautifulSoup` to parse HTML content. It explores pages recursively up to a set depth, collecting URLs that match the provided keyword while preventing duplicates.
