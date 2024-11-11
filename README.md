@@ -1,20 +1,52 @@
-# Author - Shriyog Bhesare
+This Python-based web crawler tool recursively scrapes URLs from a specified website and extracts links containing a given keyword. It uses BeautifulSoup for HTML parsing and requests for making HTTP requests, ensuring efficiency in navigating and capturing data from web pages.
+Features
 
-# Recursive URL Spider
+    Recursively crawls web pages to a specified depth.
+    Collects and prints URLs that match a specified keyword.
+    Avoids visiting duplicate URLs for faster performance.
+    Error handling to skip invalid URLs.
 
-This Python script performs recursive web scraping to discover and collect unique URLs from a given starting URL, filtering them based on a specified keyword. The script leverages Python's `requests` library to make HTTP requests and `BeautifulSoup` to parse HTML content. It explores pages recursively up to a set depth, collecting URLs that match the provided keyword while preventing duplicates.
+Prerequisites
 
-## Features
+    Python 3.x
+    Required Libraries:
+        requests - For making HTTP requests.
+        BeautifulSoup - For parsing and navigating HTML.
 
-- **Recursive URL Discovery**: Scrapes URLs from the starting point and its linked pages up to a specified depth.
-- **Keyword Filtering**: Filters URLs containing a specific keyword.
-- **Duplicate Prevention**: Ensures URLs are collected only once, preventing redundant entries.
-- **Error Handling**: Catches and reports HTTP errors gracefully, skipping invalid URLs.
+Installation
 
-## Installation
+    Clone this repository:
 
-To use this script, ensure you have the following Python libraries installed:
+git clone https://github.com/yourusername/web-crawler-tool.git
+cd web-crawler-tool
 
-1. `requests` for handling HTTP requests.
-2. `beautifulsoup4` for parsing HTML content.
+Install the required Python libraries:
+
+    pip install requests beautifulsoup4
+
+Usage
+
+To run the crawler, use:
+
+python web_crawler.py
+
+Example
+
+When prompted, enter the URL to start crawling and a keyword for filtering URLs:
+
+Enter the url: https://example.com
+Enter the keyword: blog
+
+The tool will print all URLs containing "blog" found within the specified domain, up to the maximum depth limit.
+Code Explanation
+
+    Function spider_urls:
+        Parameters: url (start URL), keyword (filter keyword), max_depth (recursion limit), current_depth (tracking depth).
+        Makes an HTTP request to each page, parsing links and checking for relevance to the keyword.
+        Recursively follows links up to max_depth, avoiding duplicate URLs.
+
+Notes
+
+    The maximum depth for recursion can be adjusted by modifying the max_depth argument.
+    URLs are filtered based on the keyword, ensuring only relevant links are processed.
 
