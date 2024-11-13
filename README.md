@@ -1,4 +1,4 @@
-URL Spider with Keyword Filte
+URL Spider with Keyword Filter
 
 This project is a Python-based web crawler that recursively searches for URLs starting from a specified URL. It includes keyword filtering to only capture URLs that contain a specific keyword. The spider prevents duplicate URLs from being revisited by maintaining a set of visited URLs. It uses the requests library for HTTP requests, BeautifulSoup for HTML parsing, and urljoin for creating absolute URLs.
 Features
