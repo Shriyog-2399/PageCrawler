@@ -1,52 +1,49 @@
-This Python-based web crawler tool recursively scrapes URLs from a specified website and extracts links containing a given keyword. It uses BeautifulSoup for HTML parsing and requests for making HTTP requests, ensuring efficiency in navigating and capturing data from web pages.
+URL Spider with Keyword Filter
+
+This project is a Python-based web crawler that recursively searches for URLs starting from a specified URL. It includes keyword filtering to only capture URLs that contain a specific keyword. The spider prevents duplicate URLs from being revisited by maintaining a set of visited URLs. It uses the requests library for HTTP requests, BeautifulSoup for HTML parsing, and urljoin for creating absolute URLs.
 Features
 
-    Recursively crawls web pages to a specified depth.
-    Collects and prints URLs that match a specified keyword.
-    Avoids visiting duplicate URLs for faster performance.
-    Error handling to skip invalid URLs.
+    Recursive Crawling: The script crawls pages up to a maximum depth, which you can set via the max_depth parameter.
+    Keyword Filtering: Only URLs that contain the specified keyword are printed and added to the visited set.
+    Duplicate Prevention: Tracks visited URLs to avoid duplicate entries.
 
-Prerequisites
+Requirements
 
-    Python 3.x
-    Required Libraries:
-        requests - For making HTTP requests.
-        BeautifulSoup - For parsing and navigating HTML.
+Install the required libraries using:
 
-Installation
-
-    Clone this repository:
-
-git clone https://github.com/yourusername/web-crawler-tool.git
-cd web-crawler-tool
-
-Install the required Python libraries:
-
-    pip install requests beautifulsoup4
+pip install requests beautifulsoup4
 
 Usage
 
-To run the crawler, use:
+    Run the script:
 
-python web_crawler.py
+    python spider.py
 
-Example
+    Enter the URL and the keyword to filter URLs.
 
-When prompted, enter the URL to start crawling and a keyword for filtering URLs:
+Example:
 
-Enter the url: https://example.com
+Enter the URL: http://example.com
 Enter the keyword: blog
 
-The tool will print all URLs containing "blog" found within the specified domain, up to the maximum depth limit.
-Code Explanation
+The script will crawl http://example.com for URLs that contain "blog."
+Code Overview
 
-    Function spider_urls:
-        Parameters: url (start URL), keyword (filter keyword), max_depth (recursion limit), current_depth (tracking depth).
-        Makes an HTTP request to each page, parsing links and checking for relevance to the keyword.
-        Recursively follows links up to max_depth, avoiding duplicate URLs.
+    spider_urls function: The primary recursive function that:
+        Crawls a specified URL to a maximum depth.
+        Uses BeautifulSoup to find all anchor tags (<a>) and extracts the URLs.
+        Filters URLs based on the keyword, then prints and stores each URL if it meets the criteria.
 
 Notes
 
-    The maximum depth for recursion can be adjusted by modifying the max_depth argument.
-    URLs are filtered based on the keyword, ensuring only relevant links are processed.
+    Error Handling: The script handles HTTP request errors and skips invalid URLs.
+    Customization: Adjust the max_depth parameter to set the recursion depth.
 
+Example Output
+
+Enter the URL: http://example.com
+Enter the keyword: news
+http://example.com/news/article1
+http://example.com/news/article2
+
+This README provides instructions on installation, usage, and code functionality, making it clear and easy to use for anyone interested in web scraping or crawling.
