@@ -1,49 +1,84 @@
-URL Spider with Keyword Filter
+**Overview**
 
-This project is a Python-based web crawler that recursively searches for URLs starting from a specified URL. It includes keyword filtering to only capture URLs that contain a specific keyword. The spider prevents duplicate URLs from being revisited by maintaining a set of visited URLs. It uses the requests library for HTTP requests, BeautifulSoup for HTML parsing, and urljoin for creating absolute URLs.
+The URL Spider Tool is a Python-based web crawler designed to recursively collect and filter URLs from a given website based on a specified keyword. It efficiently traverses links up to a user-defined depth, ensuring duplicate URLs are avoided and only relevant links containing the keyword are considered.
+
+This tool is ideal for penetration testers, researchers, and developers who need to gather URLs matching specific criteria for further analysis or processing.
 Features
 
-    Recursive Crawling: The script crawls pages up to a maximum depth, which you can set via the max_depth parameter.
-    Keyword Filtering: Only URLs that contain the specified keyword are printed and added to the visited set.
-    Duplicate Prevention: Tracks visited URLs to avoid duplicate entries.
+    Recursive Crawling: Automatically follows links on web pages to a specified depth.
+    Keyword Filtering: Only includes URLs containing a user-defined keyword.
+    Duplicate Avoidance: Ensures each URL is processed only once.
+    Error Handling: Skips invalid URLs or pages that cannot be accessed.
+    HTML Parsing: Uses BeautifulSoup to extract links from HTML content.
 
-Requirements
+**Requirements**
 
-Install the required libraries using:
+Before running the tool, ensure you have the following installed:
+
+    Python 3.6+
+    Required Python libraries:
+        requests
+        beautifulsoup4
+
+To install the dependencies, run:
 
 pip install requests beautifulsoup4
 
 Usage
 
+    Clone or download the script to your local machine.
+
     Run the script:
 
-    python spider.py
+    python spider_urls.py
 
-    Enter the URL and the keyword to filter URLs.
+    Input the target URL and keyword when prompted:
+        URL: The starting point for the web crawler (e.g., https://example.com).
+        Keyword: A string that the tool will use to filter relevant URLs.
 
-Example:
+    The tool will recursively crawl the website, extract URLs, and print relevant results to the console.
 
-Enter the URL: http://example.com
-Enter the keyword: blog
+**Code Explanation**
+Key Components:
 
-The script will crawl http://example.com for URLs that contain "blog."
-Code Overview
+    Recursive URL Crawling:
+        The function spider_urls handles recursive crawling up to the maximum depth specified by the max_depth parameter.
 
-    spider_urls function: The primary recursive function that:
-        Crawls a specified URL to a maximum depth.
-        Uses BeautifulSoup to find all anchor tags (<a>) and extracts the URLs.
-        Filters URLs based on the keyword, then prints and stores each URL if it meets the criteria.
+    Keyword Filtering:
+        The keyword is checked in each URL to ensure only relevant links are visited and printed.
 
-Notes
+    Duplicate Avoidance:
+        A visited_urls set ensures URLs are not revisited during the crawling process.
 
-    Error Handling: The script handles HTTP request errors and skips invalid URLs.
-    Customization: Adjust the max_depth parameter to set the recursion depth.
+    Error Handling:
+        The script gracefully skips over pages that result in errors (e.g., 404, 500) or cannot be accessed.
 
-Example Output
 
-Enter the URL: http://example.com
-Enter the keyword: news
-http://example.com/news/article1
-http://example.com/news/article2
+**Example Run**
 
-This README provides instructions on installation, usage, and code functionality, making it clear and easy to use for anyone interested in web scraping or crawling.
+Input:
+
+Enter the URL: https://example.com
+Enter the keyword: product
+
+Output:
+
+https://example.com/product1
+https://example.com/product2/details
+https://example.com/products/latest
+
+
+**Configuration**
+
+    Maximum Depth: The default depth is set to 3. You can adjust this by modifying the max_depth parameter in the spider_urls function call.
+
+Limitations
+
+    This tool does not handle JavaScript-rendered content.
+    It respects the default behavior of the requests library and does not modify user agents or bypass restrictions.
+
+**Future Enhancements**
+
+    Add support for multi-threading to increase crawling speed.
+    Implement handling for JavaScript-heavy websites using tools like selenium or playwright.
+    Include support for exporting results to a file.
